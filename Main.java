@@ -15,21 +15,22 @@ public class Main {
 
     public static String calc(String input) throws Exception {
 
-        String[] rome = {"","I","II","III","IV","V","VI","VII","VIII","IX", "X", "XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX", "XX",
-                "XXI","XXII","XXIII","XXIV","XXV","XXVI","XXVII","XXVIII","XXIX", "XXX",
-                "XXXI","XXXII","XXXIII","XXXIV","XXXV","XXXVI","XXXVII","XXXVIII","XXXIX", "XL",
-                "XLI","XLII","XLIII","XLIV","XLV","XLVI","XLVII","XLVIII","XLIX", "L",
-                "LI","LII","LIII","LIV","LV","LVI","LVII","LVIII","LIX", "LX",
-                "LXI","LXII","LXIII","LXIV","LXV","LXVI","LXVII","LXVIII","LXIX", "LXX",
-                "LXXI","LXXII","LXXIII","LXXIV","LXXV","LXXVI","LXXVII","LXXVIII","LXXIX", "LXXX",
-                "LXXXI","LXXXII","LXXXIII","LXXXIV","LXXXV","LXXXVI","LXXXVII","LXXXVIII","LXXXIX", "XC",
-                "XCI","XCII","XCIII","XCIV","XCV","XCVI","XCVII","XCVIII","XCIX", "C" };
+        String[] rome = {"","I","II","III","IV","V","VI","VII","VIII","IX","X",
+                "XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX",
+                "XXI","XXII","XXIII","XXIV","XXV","XXVI","XXVII","XXVIII","XXIX","XXX",
+                "XXXI","XXXII","XXXIII","XXXIV","XXXV","XXXVI","XXXVII","XXXVIII","XXXIX","XL",
+                "XLI","XLII","XLIII","XLIV","XLV","XLVI","XLVII","XLVIII","XLIX","L",
+                "LI","LII","LIII","LIV","LV","LVI","LVII","LVIII","LIX","LX",
+                "LXI","LXII","LXIII","LXIV","LXV","LXVI","LXVII","LXVIII","LXIX","LXX",
+                "LXXI","LXXII","LXXIII","LXXIV","LXXV","LXXVI","LXXVII","LXXVIII","LXXIX","LXXX",
+                "LXXXI","LXXXII","LXXXIII","LXXXIV","LXXXV","LXXXVI","LXXXVII","LXXXVIII","LXXXIX","XC",
+                "XCI","XCII","XCIII","XCIV","XCV","XCVI","XCVII","XCVIII","XCIX","C" };
 
         boolean isRoman;
 
-        if (!((isRoman = input.matches("[IVX]{1,2}" + " " + "[+\\-*/]" + " " + "[IVX]{1,2}")) || input.matches("\\d{1,2}" + " " + "[+\\-*/]" + " " + "\\d{1,2}"))){
+        if (!((isRoman = input.matches("[IVX]{1,4}" + " " + "[+\\-*/]" + " " + "[IVX]{1,4}")) || input.matches("\\d{1,2}" + " " + "[+\\-*/]" + " " + "\\d{1,2}")))
             throw new Exception("Не верный формат ввода. Попробуйте ввести: a ^ b. Вместо \"^\", введите операцию которую вы хотите провести. Виды операций: '*,/,+,-'");
-        }
+
 
         String[] arr = input.split(" ");
         int a = 0, b = 0;
@@ -55,7 +56,7 @@ public class Main {
         };
 
         if(isRoman){
-            if(res < 1) throw new Exception("Число не может быть < 1");
+            if(res < 1) throw new Exception("В римской системе минимальное число = I");
 
             char[] num = Integer.toString(res).toCharArray();
             StringBuilder ress = new StringBuilder();
